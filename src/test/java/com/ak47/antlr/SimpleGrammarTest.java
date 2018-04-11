@@ -1,5 +1,6 @@
 package com.ak47.antlr;
 
+import com.ak47.antlr4.simple.SimpleVisitor;
 import com.ak47.antlr4.simple.ast.SimpleLexer;
 import com.ak47.antlr4.simple.ast.SimpleParser;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -32,11 +33,15 @@ public class SimpleGrammarTest {
     public void testAddition() throws Exception {
         SimpleParser.CalcContext ctx = parse("1 + 3");
 
+        System.out.println("=====================================");
+        System.out.println(SimpleVisitor.parse("1 + 3 * 4"));
+        System.out.println("=====================================");
+
         assertThat(ctx.expr()).isNotNull();
         assertThat(ctx.expr().expr(0).number().getText().equals("1"));
         assertThat(ctx.expr().PLUS()).isNotNull();
         assertThat(ctx.expr().expr(1).number().getText().equals("3"));
 
-        System.out.println(tokenString(SimpleLexer.class, "1 + 3"));
+        System.out.println(tokenString(SimpleLexer.class, "1 + 3 * 4"));
     }
 }

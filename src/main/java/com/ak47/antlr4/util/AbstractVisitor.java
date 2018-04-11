@@ -10,6 +10,13 @@ import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.TokenStream;
 
+/**
+ * <p>
+ *    Visitor/Listener的区别
+ * <p/>
+ * @param <L>
+ * @param <P>
+ */
 public class AbstractVisitor<L extends Lexer, P extends Parser> {
     private L lexer;
     private P parser;
